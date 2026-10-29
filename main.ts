@@ -28,5 +28,5 @@ export type Card = {
 }
 
 export function computePokerHand(cards: readonly Card[]): number {
-  return cards[0].value;
+  return cards.reduce((acc, card) => card.value > acc ? card.value : acc, 0);
 }

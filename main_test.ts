@@ -31,7 +31,12 @@ const multiCardCases: [Card[], number][] = [
   [[
     {value: cardValue[1], color: cardColor.SPADE},
     {value: cardValue[2], color: cardColor.SPADE},
-  ], 3],
+  ], 2],
+  [[
+    {value: cardValue[1], color: cardColor.SPADE},
+    {value: cardValue[6], color: cardColor.SPADE},
+    {value: cardValue[2], color: cardColor.SPADE},
+  ], 6]
 ];
 
 for (const [hand, expected] of multiCardCases) {
