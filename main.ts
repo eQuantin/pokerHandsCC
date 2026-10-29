@@ -32,7 +32,6 @@ export function computePokerHand(cards: readonly Card[]): number {
   for (const card of cards) {
     valueCount[card.value] = (valueCount[card.value] || 0) + 1;
   }
-
   const maxCount = Object.values(valueCount).sort((a, b) => b - a);
 
   if (maxCount[0] == 4) {
@@ -41,6 +40,11 @@ export function computePokerHand(cards: readonly Card[]): number {
 
   if (maxCount[0] == 3 && maxCount[1] == 2) {
     return 50;
+  }
+
+  const isFlush = cards.every(card => card.color === cards[0].color);
+  if (isFlush) {
+    return 45;
   }
 
   if (maxCount[0] == 3) {
