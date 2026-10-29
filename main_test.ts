@@ -118,3 +118,26 @@ for (const [hand, expected] of fullCases) {
     assertEquals(computePokerHand(hand), expected);
   });
 }
+
+const flushCases: [Card[], number][] = [
+  [[
+    {value: cardValue[2], color: cardColor.SPADE},
+    {value: cardValue[6], color: cardColor.SPADE},
+    {value: cardValue[7], color: cardColor.SPADE},
+    {value: cardValue[1], color: cardColor.SPADE},
+    {value: cardValue.J, color: cardColor.SPADE},
+  ], 45],
+  [[
+    {value: cardValue[7], color: cardColor.HEART},
+    {value: cardValue.K, color: cardColor.HEART},
+    {value: cardValue[1], color: cardColor.HEART},
+    {value: cardValue.J, color: cardColor.HEART},
+    {value: cardValue[3], color: cardColor.HEART},
+  ], 45]
+];
+
+for (const [hand, expected] of flushCases) {
+  Deno.test(`A poker hand with ${describeHand(hand)} should return ${expected}`, () => {
+    assertEquals(computePokerHand(hand), expected);
+  });
+}
