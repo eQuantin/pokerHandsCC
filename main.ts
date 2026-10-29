@@ -27,6 +27,18 @@ export type Card = {
   color: string;
 }
 
+function isStraight(cards: readonly Card[]): boolean {
+  return cards.every((card, i, arr) => {
+    if (i === 0) return true
+    const prevCardValue = arr[i - 1].value;
+    return card.value === prevCardValue + 1;
+  });
+}
+
+function isFlush(cards: readonly Card[]): boolean {
+  return cards.every(card => card.color === cards[0].color);
+}
+
 export function computePokerHand(cards: readonly Card[]): number {
   const valueCount: Record<number, number> = {};
   for (const card of cards) {
@@ -42,18 +54,12 @@ export function computePokerHand(cards: readonly Card[]): number {
     return 50;
   }
 
-  const isFlush = cards.every(card => card.color === cards[0].color);
-  if (isFlush) {
+
+  if (isFlush(cards)) {
     return 45;
   }
 
-  const isStraight = cards.every((card, i, arr) => {
-    if (i === 0) return true
-    const prevCardValue = arr[i - 1].value;
-    return card.value === prevCardValue + 1;
-  });
-
-  if (isStraight) {
+  if (isStraight(cards)) {
     return 40;
   }
 
