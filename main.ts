@@ -27,6 +27,6 @@ export type Card = {
   color: string;
 }
 
-export function computePokerHand(cards: Card[]): number {
+export function computePokerHand(cards: readonly Card[]): number {
   return 1;
 }
