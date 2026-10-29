@@ -30,5 +30,6 @@ export type Card = {
 export function computePokerHand(cards: readonly Card[]): number {
   if(cards[0].value == 1) return 1;
   if(cards[0].value == 2) return 2;
+  if(cards[0].value == 3) return 3;
   return 0;
 }
