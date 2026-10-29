@@ -39,6 +39,10 @@ export function computePokerHand(cards: readonly Card[]): number {
     return 30;
   }
 
+  if (maxCount == 4) {
+    return 60;
+  }
+
 
   return cards.reduce((acc, card) => card.value > acc ? card.value : acc, 0);
 }
