@@ -1,6 +1,8 @@
 import { assertEquals } from "@std/assert";
-import { computePokerHand } from "./main.ts";
+import { computePokerHand, type Card, cardValue, cardColor} from "./main.ts";
 
-Deno.test("computePokerHand", () => {
-  assertEquals(computePokerHand(), 0);
+const hand = []
+
+Deno.test("A poker hand with only a 1 should return 1", () => {
+  assertEquals(computePokerHand([{value: cardValue[1], color: cardColor.SPADE}]), 1);
 });
