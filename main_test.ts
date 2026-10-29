@@ -63,3 +63,26 @@ for (const [hand, expected] of brelanCases) {
     assertEquals(computePokerHand(hand), expected);
   });
 }
+
+const suiteCases: [Card[], number][] = [
+  [[
+    {value: cardValue[1], color: cardColor.SPADE},
+    {value: cardValue[2], color: cardColor.SPADE},
+    {value: cardValue[3], color: cardColor.SPADE},
+    {value: cardValue[4], color: cardColor.SPADE},
+    {value: cardValue[5], color: cardColor.SPADE},
+  ], 40],
+  [[
+    {value: cardValue[6], color: cardColor.SPADE},
+    {value: cardValue[7], color: cardColor.SPADE},
+    {value: cardValue[8], color: cardColor.SPADE},
+    {value: cardValue[9], color: cardColor.SPADE},
+    {value: cardValue[10], color: cardColor.SPADE},
+  ], 40]
+];
+
+for (const [hand, expected] of suiteCases) {
+  Deno.test(`A poker hand with ${describeHand(hand)} should return ${expected}`, () => {
+    assertEquals(computePokerHand(hand), expected);
+  });
+}
