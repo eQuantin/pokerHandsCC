@@ -28,5 +28,20 @@ export type Card = {
 }
 
 export function computePokerHand(cards: readonly Card[]): number {
+  const firstCard = cards[0];
+  let differFromFirstCard = false;
+  if (cards.length > 1)  {
+    for (let i = 1; i < cards.length; i++) {
+      if (cards[i].value !== firstCard.value) {
+        differFromFirstCard = true;
+        break;
+      }
+    }
+
+    if (!differFromFirstCard) {
+      return 30;
+    }
+  }
+
   return cards.reduce((acc, card) => card.value > acc ? card.value : acc, 0);
 }
