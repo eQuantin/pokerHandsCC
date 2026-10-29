@@ -47,6 +47,16 @@ export function computePokerHand(cards: readonly Card[]): number {
     return 45;
   }
 
+  const isStraight = cards.every((card, i, arr) => {
+    if (i === 0) return true
+    const prevCardValue = arr[i - 1].value;
+    return card.value === prevCardValue + 1;
+  });
+
+  if (isStraight) {
+    return 40;
+  }
+
   if (maxCount[0] == 3) {
     return 30;
   }
