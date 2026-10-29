@@ -35,13 +35,17 @@ export function computePokerHand(cards: readonly Card[]): number {
 
   const maxCount = Math.max(...Object.values(valueCount));
 
+  if (maxCount == 4) {
+    return 60;
+  }
+
   if (maxCount == 3) {
     return 30;
   }
 
-  if (maxCount == 4) {
-    return 60;
-  }
+
+
+
 
 
   return cards.reduce((acc, card) => card.value > acc ? card.value : acc, 0);
