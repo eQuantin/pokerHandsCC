@@ -33,13 +33,17 @@ export function computePokerHand(cards: readonly Card[]): number {
     valueCount[card.value] = (valueCount[card.value] || 0) + 1;
   }
 
-  const maxCount = Math.max(...Object.values(valueCount));
+  const maxCount = Object.values(valueCount).sort((a, b) => b - a);
 
-  if (maxCount == 4) {
+  if (maxCount[0] == 4) {
     return 60;
   }
 
-  if (maxCount == 3) {
+  if (maxCount[0] == 3 && maxCount[1] == 2) {
+    return 50;
+  }
+
+  if (maxCount[0] == 3) {
     return 30;
   }
 
