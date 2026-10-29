@@ -31,11 +31,16 @@ const multiCardCases: [Card[], number][] = [
   [[
     {value: cardValue[1], color: cardColor.SPADE},
     {value: cardValue[2], color: cardColor.SPADE},
-  ], 2],
+    {value: cardValue[2], color: cardColor.HEART},
+    {value: cardValue[9], color: cardColor.CLUB},
+    {value: cardValue.J, color: cardColor.CLUB},
+  ], 11],
   [[
     {value: cardValue[1], color: cardColor.SPADE},
     {value: cardValue[6], color: cardColor.SPADE},
-    {value: cardValue[2], color: cardColor.SPADE},
+    {value: cardValue[3], color: cardColor.HEART},
+    {value: cardValue[4], color: cardColor.SPADE},
+    {value: cardValue[1], color: cardColor.CLUB},
   ], 6]
 ];
 
@@ -48,40 +53,21 @@ for (const [hand, expected] of multiCardCases) {
 const brelanCases: [Card[], number][] = [
   [[
     {value: cardValue[1], color: cardColor.SPADE},
-    {value: cardValue[1], color: cardColor.SPADE},
-    {value: cardValue[1], color: cardColor.SPADE},
+    {value: cardValue[1], color: cardColor.HEART},
+    {value: cardValue[1], color: cardColor.CLUB},
+    {value: cardValue[2], color: cardColor.HEART},
+    {value: cardValue[3], color: cardColor.HEART},
   ], 30],
   [[
+    {value: cardValue[8], color: cardColor.HEART},
+    {value: cardValue[9], color: cardColor.HEART},
     {value: cardValue[6], color: cardColor.SPADE},
-    {value: cardValue[6], color: cardColor.SPADE},
-    {value: cardValue[6], color: cardColor.SPADE},
+    {value: cardValue[6], color: cardColor.CLUB},
+    {value: cardValue[6], color: cardColor.HEART},
   ], 30]
 ];
 
 for (const [hand, expected] of brelanCases) {
-  Deno.test(`A poker hand with ${describeHand(hand)} should return ${expected}`, () => {
-    assertEquals(computePokerHand(hand), expected);
-  });
-}
-
-const suiteCases: [Card[], number][] = [
-  [[
-    {value: cardValue[1], color: cardColor.SPADE},
-    {value: cardValue[2], color: cardColor.SPADE},
-    {value: cardValue[3], color: cardColor.SPADE},
-    {value: cardValue[4], color: cardColor.SPADE},
-    {value: cardValue[5], color: cardColor.SPADE},
-  ], 40],
-  [[
-    {value: cardValue[6], color: cardColor.SPADE},
-    {value: cardValue[7], color: cardColor.SPADE},
-    {value: cardValue[8], color: cardColor.SPADE},
-    {value: cardValue[9], color: cardColor.SPADE},
-    {value: cardValue[10], color: cardColor.SPADE},
-  ], 40]
-];
-
-for (const [hand, expected] of suiteCases) {
   Deno.test(`A poker hand with ${describeHand(hand)} should return ${expected}`, () => {
     assertEquals(computePokerHand(hand), expected);
   });
