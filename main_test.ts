@@ -44,3 +44,22 @@ for (const [hand, expected] of multiCardCases) {
     assertEquals(computePokerHand(hand), expected);
   });
 }
+
+const brelanCases: [Card[], number][] = [
+  [[
+    {value: cardValue[1], color: cardColor.SPADE},
+    {value: cardValue[1], color: cardColor.SPADE},
+    {value: cardValue[1], color: cardColor.SPADE},
+  ], 30],
+  [[
+    {value: cardValue[6], color: cardColor.SPADE},
+    {value: cardValue[6], color: cardColor.SPADE},
+    {value: cardValue[6], color: cardColor.SPADE},
+  ], 30]
+];
+
+for (const [hand, expected] of brelanCases) {
+  Deno.test(`A poker hand with ${describeHand(hand)} should return ${expected}`, () => {
+    assertEquals(computePokerHand(hand), expected);
+  });
+}
