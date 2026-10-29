@@ -28,5 +28,5 @@ export type Card = {
 }
 
 export function computePokerHand(cards: Card[]): number {
-  return 0;
+  return 1;
 }
